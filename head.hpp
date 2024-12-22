@@ -5,7 +5,8 @@
 #include "Organ.hpp"
 #include "Basic.hpp"
 #include "enum.hpp"
-#include "Part.hpp"
+#include "Tile.hpp"
+#include "TilePos.hpp"
 
 //finish
 

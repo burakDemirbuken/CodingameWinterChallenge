@@ -1,17 +1,20 @@
+head.hpp
 enum.hpp
-Part.hpp
+Tile.hpp
+TilePos.hpp
 Map.hpp
 Organ.hpp
-Basic.hpp
 Proteins.hpp
+Basic.hpp
 Player.hpp
 Game.hpp
 
-Part.cpp
+Tile.cpp
 Basic.cpp
 Game.cpp
+TilePos.cpp
 Map.cpp
 Organ.cpp
 Player.cpp
 Proteins.cpp
-  
+main.cpp

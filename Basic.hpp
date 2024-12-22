@@ -5,5 +5,8 @@
 
 class Basic : public Organ
 {
+	public:
+		static Proteins	proteinCost;
+
 	private:
 };

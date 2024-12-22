@@ -2,8 +2,8 @@
 
 // finish
 
-Part::Part()
+Tile::Tile()
 {
-	part = EMPTY;
+	tile = EMPTY;
 	owner = NEITHER;
 }

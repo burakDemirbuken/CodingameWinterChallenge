@@ -3,10 +3,10 @@
 
 // finish
 
-class Part
+class	Tile
 {
 	public:
-		e_mapPart	part;
+		e_mapTile	tile;
 		e_owner		owner;
-		Part();
+		Tile();
 };

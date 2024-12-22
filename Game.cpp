@@ -2,61 +2,60 @@
 
 // finish
 
+Map Game::map = Map();
+
 Game::Game()
 {
 
 }
 
-Game::~Game()
+Game::~Game() {}
+
+void	Game::setTile()
 {
+	int		x;
+	int		y;
+	int		owner;
+	int		organId; // id of this entity if it's an organ, 0 otherwise
+	int		organRootId;
+	int		organParentId;
+	Tile	tile;
+	string	type;
+	string	organ_dir; // N,E,S,W or X if not an organ
 
-}
-
-void	Game::setPart()
-{
-	int			x;
-	int			y;
-	int			owner;
-	int			organ_id;
-	int			organ_parent_id;
-	int			organ_root_id;
-	Part		part;
-	string		type;
-	string		organ_dir;
-
-    cin >> x >> y >> type >> owner >> organ_id >> organ_dir >> organ_parent_id >> organ_root_id; cin.ignore();
+	cin >> x >> y >> type >> owner >> organId >> organ_dir >> organParentId >> organRootId; cin.ignore();
 
 	switch (type[0])
 	{
 		case 'W':
-			part.part = WALL;
+			tile.tile = WALL;
 			break;
 		case 'B':
 			if(type.length() == 1)
-				part.part = B;
+				tile.tile = B;
 			else
-				part.part = BASIC;
+				tile.tile = BASIC;
 			break;
 		case 'R':
-			part.part = ROOT;
+			tile.tile = ROOT;
 			break;
 		case 'T':
-			part.part = TENTACLE;
+			tile.tile = TENTACLE;
 			break;
 		case 'H':
-			part.part = HARVESTER;
+			tile.tile = HARVESTER;
 			break;
 		case 'S':
-			part.part = SPORER;
+			tile.tile = SPORER;
 			break;
 		case 'A':
-			part.part = A;
+			tile.tile = A;
 			break;
 		case 'C':
-			part.part = C;
+			tile.tile = C;
 			break;
 		case 'D':
-			part.part = D;
+			tile.tile = D;
 			break;
 		default:
 			break;
@@ -64,14 +63,54 @@ void	Game::setPart()
 	switch (owner)
 	{
 		case 1:
-			part.owner = PLAYER;
+			tile.owner = PLAYER;
 			break;
 		case -1:
-			part.owner = ENEMY;
+			tile.owner = ENEMY;
 			break;
 		default:
-			part.owner = NEITHER;
+			tile.owner = NEITHER;
 			break;
 	}
-	_map.setMapPart(x, y, part);
+
+	map.setMapTile(x, y, tile);
+	if (owner != 0)
+	{
+		e_way	dir;
+		switch (organ_dir[0])
+		{
+			case 'N':
+				dir = NORTH;
+				break;
+			case 'E':
+				dir = EAST;
+				break;
+			case 'S':
+				dir = SOUTH;
+				break;
+			case 'W':
+				dir = WEST;
+				break;
+		}
+		if (owner == 1)
+			this->_player.addOrgan(Organ(organId, nullptr, nullptr, dir, x, y));
+		else
+			this->_enemy.addOrgan(Organ(organId, nullptr, nullptr, dir, x, y));
+	}
+
+}
+
+void	Game::resetMap()
+{
+	_map.resetMap();
+}
+
+Player	&Game::getPlayer()
+{
+	return _player;
+}
+
+Player	&Game::getEnemy()
+{
+	return _enemy;
 }

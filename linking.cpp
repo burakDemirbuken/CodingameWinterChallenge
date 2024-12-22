@@ -33,7 +33,7 @@ void fileOut(std::string	fileName, std::ofstream &ofile)
 
 int main()
 {
-	std::ofstream	ofile("a.out.cpp");
+	std::ofstream	ofile("sourcecode");
 	std::ifstream	ifile("cakmaMakefile");
 	std::vector<std::string>	files;
 	std::string		line;
@@ -47,12 +47,8 @@ int main()
 		if (!line.empty())
 			files.push_back(line);
 
-	fileOut("head.hpp", ofile);
 	for (int i = 0; i < files.size(); i++)
-	{
 		fileOut(files[i], ofile);
-	}
-	fileOut("2024WinterChallange.cpp", ofile);
 
 	return 0;
 }

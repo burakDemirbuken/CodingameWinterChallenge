@@ -8,13 +8,17 @@ class Game
 	private:
 		Player	_player;
 		Player	_enemy;
-		Map		_map;
 
 	public:
+		static Map	map;
 		// structor
 		Game();
 		~Game();
 
+		void	setTile();
+		void	resetMap();
+
 		// getter
-		void	setPart();
+		Player	&getPlayer();
+		Player	&getEnemy();
 };

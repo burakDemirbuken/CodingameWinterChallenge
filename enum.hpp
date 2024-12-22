@@ -11,7 +11,7 @@ enum e_way
 	X
 };
 
-enum e_mapPart
+enum e_mapTile
 {
 	WALL,
 	ROOT,
